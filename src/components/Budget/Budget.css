@@ -1,0 +1,13 @@
+.langugage-icons {
+    position: absolute;
+    width: 100px;
+    right:20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.langugage-icons img {
+    margin-top: 10px;
+    flex-basis: 30%;
+}
+
