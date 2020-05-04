@@ -78,31 +78,31 @@
             "id": "2",
             "budget": 39.99,
             "categoryId": "2",
-            "budgetId": "2"
+            "budgetId": "1"
         },
         {
             "id": "3",
             "budget": 723,
             "categoryId": "3",
-            "budgetId": "2"
+            "budgetId": "1"
         },
         {
             "id": "4",
             "budget": 30,
             "categoryId": "4",
-            "budgetId": "3"
+            "budgetId": "1"
         },
         {
             "id": "5",
             "budget": 450,
             "categoryId": "5",
-            "budgetId": "4"
+            "budgetId": "1"
         },
         {
             "id": "6",
             "budget": 80,
             "categoryId": "6",
-            "budgetId": "5"
+            "budgetId": "1"
         }
     ],
     "budgets": [
