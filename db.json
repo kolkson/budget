@@ -29,50 +29,80 @@
         {
             "id": "1",
             "name": "Internet",
-            "budget": 120.47,
             "mainCategoryId": "2"
         },
         {
             "id": "2",
             "name": "telefon",
-            "budget": 120.47,
             "mainCategoryId": "2"
         },
         {
             "id": "3",
             "name": "wynajem",
-            "budget": 120.47,
             "mainCategoryId": "2"
         },
         {
             "id": "4",
             "name": "spożywka",
-            "budget": 120.47,
             "mainCategoryId": "1"
         },
         {
             "id": "5",
             "name": "kurczak",
-            "budget": 120.47,
             "mainCategoryId": "6"
         },
         {
             "id": "6",
             "name": "tomorrowland",
-            "budget": 120.47,
             "mainCategoryId": "4"
         },
         {
             "id": "7",
             "name": "benzyna",
-            "budget": 120.47,
             "mainCategoryId": "3"
         },
         {
             "id": "8",
             "name": "leki",
-            "budget": 120.47,
             "mainCategoryId": "5"
+        }
+    ],
+    "budgetCategories": [
+        {
+            "id": "1",
+            "budget": 120.47,
+            "categoryId": "1",
+            "budgetId": "1"
+        },
+        {
+            "id": "2",
+            "budget": 39.99,
+            "categoryId": "2",
+            "budgetId": "1"
+        },
+        {
+            "id": "3",
+            "budget": 723,
+            "categoryId": "3",
+            "budgetId": "1"
+        },
+        {
+            "id": "4",
+            "budget": 30,
+            "categoryId": "4",
+            "budgetId": "1"
+        },
+        {
+            "id": "5",
+            "budget": 450,
+            "categoryId": "5",
+            "budgetId": "1"
+        },
+        {
+            "id": "6",
+            "budget": 80,
+            "categoryId": "6",
+            "budgetId": "1"
         }
     ],
     "budgets": [

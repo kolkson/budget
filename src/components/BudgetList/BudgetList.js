@@ -2,17 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { groupBy } from 'lodash';
 
-function BudgetList({ budgetedCategories, allCategories }) {
-    const budgetedCategoriesByParent = groupBy(
-        budgetedCategories,
-        item => allCategories.find(category => category.id === item.categoryId).mainCategory.name)
-    console.log(budgetedCategories)
-    console.log(budgetedCategoriesByParent)
-    console.log(allCategories)
-    return (
-        <div>
+const Item = ({ category }) => (
+    <div></div>
+)
 
-        </div>
+function BudgetList({ budgetedCategories, allCategories }) {
+    const object = Object.entries(allCategories).map(category => {
+        return (
+            <li>{category.name}</li>
+        )
+    })
+
+    return (
+        <ul>
+            {object}
+        </ul>
     )
 }
 
