@@ -75,6 +75,13 @@
             "mainCategoryId": "5"
         }
     ],
+    "budgets": [
+        {
+            "id": "1",
+            "name": "April",
+            "totalAmount": 2400
+        }
+    ],
     "transactions": [
         {
             "id": "1",
