@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import { groupBy } from 'lodash';
 
 function BudgetList({ budgetedCategories, allCategories }) {
-    // const budgetedCategoriesByParent = groupBy(budgetedCategories, item =>);
+    const budgetedCategoriesByParent = groupBy(
+        budgetedCategories,
+        item => allCategories.find(category => category.id === item.categoryId).mainCategory.name)
     console.log(budgetedCategories)
-    // console.log(budgetedCategoriesByParent)
+    console.log(budgetedCategoriesByParent)
+    console.log(allCategories)
     return (
         <div>
 
