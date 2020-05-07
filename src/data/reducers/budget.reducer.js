@@ -8,6 +8,8 @@ import {
     BUDGETED_CATEGORIES_GET_SUCCESS,
     BUDGETED_CATEGORIES_GET_FAILURE,
 
+
+
     LOADING_STATES,
 } from '../constants'
 
@@ -67,6 +69,7 @@ function budget(state = initalState, action) {
                 budgetedCategories: {},
                 loadingState: newLoadingState
             }
+
         default:
             return state;
     }

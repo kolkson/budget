@@ -1,26 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { groupBy } from 'lodash';
+import ToggleableList from '../ToggleableList/ToggleableList';
+import './BudgetList.css'
 
-const Item = ({ category }) => (
-    <div></div>
+const MainCategory = ({ category }) => (
+    <div><span>{category.name}</span></div>
 )
 
-function BudgetList({ budgetedCategories, allCategories }) {
-    const object = Object.entries(allCategories).map(category => {
-        return (
-            <li>{category.name}</li>
-        )
-    })
+function BudgetList({ budgetedCategories, allCategories, mainCategories }) {
+    const [selectedItem, setSelectedItem] = useState('string')
 
+
+    // const listItems = Object.entries(budgetedCategoriesByParent).map(([parentName, category]) => (
+
+    // <div>{parentName}</div>
+
+    // )
     return (
-        <ul>
-            {object}
-        </ul>
+        <div className="mainCategories">
+
+            {/* <ToggleableList
+                items={[]} /> */}
+            {mainCategories.map(category => {
+                console.log(category)
+                return <MainCategory
+                    key={category.id}
+                    category={category}
+                />
+            })}
+        </div>
     )
 }
 
 export default connect(state => ({
     budgetedCategories: state.budget.budgetedCategories,
     allCategories: state.common.allCategories,
+    mainCategories: state.common.mainCategories
 }))(BudgetList)

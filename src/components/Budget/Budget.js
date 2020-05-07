@@ -5,16 +5,17 @@ import poland from '../../icons/poland.png'
 import unitedKingdom from '../../icons/united-kingdom.png'
 import { connect } from 'react-redux';
 import { fetchBudget, fetchBudgetedCategories } from '../../data/actions/budget.actions'
-import { fetchAllCategories } from '../../data/actions/common.actions';
+import { fetchMainCategories, fetchAllCategories } from '../../data/actions/common.actions';
 import BudgetList from '../BudgetList'
 
 
-function Budget({ fetchBudget, fetchBudgetedCategories, fetchAllCategories }) {
+function Budget({ fetchBudget, fetchBudgetedCategories, fetchAllCategories, fetchMainCategories }) {
     useEffect(() => {
         fetchBudget(1);
         fetchBudgetedCategories(1);
         fetchAllCategories();
-    }, [fetchBudget, fetchBudgetedCategories, fetchAllCategories])
+        fetchMainCategories();
+    }, [fetchBudget, fetchBudgetedCategories, fetchAllCategories, fetchMainCategories])
     return (
         <Wrapper>
             <div className="langugage-icons">
@@ -34,5 +35,6 @@ export default connect(state => {
     {
         fetchBudget,
         fetchBudgetedCategories,
-        fetchAllCategories
+        fetchAllCategories,
+        fetchMainCategories
     })(Budget)
