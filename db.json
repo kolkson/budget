@@ -29,42 +29,42 @@
         {
             "id": "1",
             "name": "Internet",
-            "mainCategoryId": "2"
+            "parentCategoryId": "2"
         },
         {
             "id": "2",
             "name": "telefon",
-            "mainCategoryId": "2"
+            "parentCategoryId": "2"
         },
         {
             "id": "3",
             "name": "wynajem",
-            "mainCategoryId": "2"
+            "parentCategoryId": "2"
         },
         {
             "id": "4",
             "name": "spożywka",
-            "mainCategoryId": "1"
+            "parentCategoryId": "1"
         },
         {
             "id": "5",
             "name": "kurczak",
-            "mainCategoryId": "6"
+            "parentCategoryId": "6"
         },
         {
             "id": "6",
             "name": "tomorrowland",
-            "mainCategoryId": "4"
+            "parentCategoryId": "4"
         },
         {
             "id": "7",
             "name": "benzyna",
-            "mainCategoryId": "3"
+            "parentCategoryId": "3"
         },
         {
             "id": "8",
             "name": "leki",
-            "mainCategoryId": "5"
+            "parentCategoryId": "5"
         }
     ],
     "budgetCategories": [
