@@ -122,7 +122,8 @@
             "amount": 120.47,
             "categoryId": "1",
             "date": "2019-12-15T20:39:41.768Z",
-            "budgetId": "1"
+            "budgetId": "1",
+            "name": "żywność"
         },
         {
             "id": "2",

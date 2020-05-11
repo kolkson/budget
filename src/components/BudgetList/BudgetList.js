@@ -10,20 +10,21 @@ import Category from '../Category';
 
 
 
-function BudgetList({ budgetedCategories, allCategories, parentCategories }) {
-    const budgetedCategoriesByParent = groupBy(allCategories, item =>
-        allCategories.find(category => category.parentCategoryId === item.parentCategory.id).parentCategory.name)
+function BudgetList({ budgetedCategories, allCategories, parentCategories, budget }) {
+    const budgetedCategoriesByParent = useMemo(() => groupBy(allCategories, item =>
+        allCategories.find(category => category.parentCategoryId === item.parentCategory.id).parentCategory.name), [allCategories])
 
 
 
 
 
-    const listItems = Object.entries(budgetedCategoriesByParent).map(([parentName, categories]) => ({
+    const listItems = useMemo(() => Object.entries(budgetedCategoriesByParent).map(([parentName, categories]) => ({
         id: parentName,
         Trigger: ({ onClick }) => (
             <MainCategory
                 name={parentName}
-                categories={categories}
+                categories={budgetedCategoriesByParent}
+                transactions={budget.transactions}
                 onClick={() => {
                     onClick(parentName)
                 }}
@@ -44,7 +45,7 @@ function BudgetList({ budgetedCategories, allCategories, parentCategories }) {
             })
 
 
-    }))
+    })), [budget.transactions, budgetedCategoriesByParent])
 
 
 
@@ -59,5 +60,6 @@ function BudgetList({ budgetedCategories, allCategories, parentCategories }) {
 export default connect(state => ({
     budgetedCategories: state.budget.budgetedCategories,
     allCategories: state.common.allCategories,
-    parentCategories: state.common.parentCategories
+    parentCategories: state.common.parentCategories,
+    budget: state.budget.budget
 }))(BudgetList)
