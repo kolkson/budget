@@ -2,15 +2,18 @@
     "parentCategories": [
         {
             "id": "1",
-            "name": "żywność"
+            "name": "żywność",
+            "budget": 39.99
         },
         {
             "id": "2",
-            "name": "rachunki"
+            "name": "rachunki",
+            "budget": 39.99
         },
         {
             "id": "3",
-            "name": "transport"
+            "name": "transport",
+            "budget": 39.99
         },
         {
             "id": "4",

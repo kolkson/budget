@@ -5,8 +5,8 @@ import {
 } from '../constants'
 import API from '../fetch'
 
-export const fetchMainCategories = () => {
-    const promise = API.common.fetchMainCategories()
+export const fetchParentCategories = () => {
+    const promise = API.common.fetchParentCategories()
 
     return ({
         type: BUDGETED_MAIN_CATEGORIES_GET,

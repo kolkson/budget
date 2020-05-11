@@ -15,61 +15,48 @@ import Category from './Category';
 
 
 
-function BudgetList({ budgetedCategories, allCategories, mainCategories }) {
-    const budgetedCategoriesByParent = useMemo(() =>
-        groupBy(
-            mainCategories,
-            item => allCategories.find(category => category.mainCategoryId === item.id).parentCategory.name)
-        , [allCategories, mainCategories])
+function BudgetList({ budgetedCategories, allCategories, parentCategories }) {
+    const budgetedCategoriesByParent = groupBy(allCategories, item =>
+        allCategories.find(category => category.parentCategoryId === item.parentCategory.id).parentCategory.name)
 
-    const listItems = Object.entries(budgetedCategoriesByParent).map(([mainCategoryName, categories]) => ({
-        id: mainCategoryName,
+
+
+
+
+    const listItems = Object.entries(budgetedCategoriesByParent).map(([parentName, categories]) => ({
+        id: parentName,
         Trigger: ({ onClick }) => (
             <MainCategory
-                name={mainCategoryName}
+                name={parentName}
+                onClick={() => {
+                    onClick(parentName)
+                }}
             />
-        )
-    }))
-    // const listItems = useMemo(
-    //     () =>
-    //         Object.entries(budgetedCategoriesByParent).map(([parentName, categories]) => ({
-    //             id: parentName,
-    //             Trigger: ({ onClick }) => (
-    //                 <MainCategory
-    //                     name={parentName}
-    //                     onClick={() => {
-    //                         onClick(parentName);
-    //                     }}
-    //                     categories={categories}
-    //                 />
-    //             ),
-    //             children: categories.map(budgetedCategory => {
-    //                 const { name } = allCategories.find(category => category.id === budgetedCategory.categoryId)
-    //                 return (
-    //                     <Category
-    //                         key={budgetedCategory.id}
-    //                         name={name}
-    //                         item={budgetedCategory}
+        ),
+        children:
 
-    //                     />
-    //                 )
-    //             })
-    //         })), [allCategories, budgetedCategoriesByParent])
+            categories.map(category => {
+                const name = category.name
+                return (
+                    <>
+                        <Category
+                            key={category.id}
+                            name={name}
+                            item={category}
+                        />
+                    </>
+                )
+            })
+
+
+    }))
+
+
 
     return (
         <div className="mainCategories">
             <ToggleableList
                 items={listItems} />
-            {/* {mainCategories.map(category => {
-                return <MainCategory
-                    key={category.id}
-                    id={category.id}
-                    category={category}
-                    handlerClick={handlerClick}
-                />
-            })} */}
-
-
         </div>
     )
 }
@@ -77,5 +64,5 @@ function BudgetList({ budgetedCategories, allCategories, mainCategories }) {
 export default connect(state => ({
     budgetedCategories: state.budget.budgetedCategories,
     allCategories: state.common.allCategories,
-    mainCategories: state.common.mainCategories
+    parentCategories: state.common.parentCategories
 }))(BudgetList)

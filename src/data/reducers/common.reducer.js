@@ -15,7 +15,7 @@ import {
 const initalState = {
     loadingState: {},
     allCategories: [],
-    mainCategories: []
+    parentCategories: []
 }
 
 function common(state = initalState, action) {
@@ -34,14 +34,14 @@ function common(state = initalState, action) {
             delete newLoadingState.BUDGETED_MAIN_CATEGORIES_GET_REQUEST
             return {
                 ...state,
-                mainCategories: action.payload,
+                parentCategories: action.payload,
                 loadingState: newLoadingState
             }
         case BUDGETED_MAIN_CATEGORIES_GET_FAILURE:
             delete newLoadingState.BUDGETED_MAIN_CATEGORIES_GET_REQUEST
             return {
                 ...state,
-                mainCategories: {},
+                parentCategories: [],
                 loadingState: newLoadingState
             }
         case ALL_CATEGORIES_GET_REQUEST:

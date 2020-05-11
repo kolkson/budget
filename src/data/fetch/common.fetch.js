@@ -1,5 +1,5 @@
-export const fetchMainCategories = () => {
-    const promise = fetch(`${process.env.REACT_APP_API_URL}/parentCategories`);
+export const fetchParentCategories = () => {
+    const promise = fetch(`${process.env.REACT_APP_API_URL}/budgets/1/parentCategories`);
 
     return promise
 }

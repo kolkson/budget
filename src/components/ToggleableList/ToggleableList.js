@@ -1,15 +1,24 @@
 import React, { Fragment, useState, useEffect } from 'react';
 
-const Item = ({ item, onClickHandler, isActive }) => (
+const Item = ({ item, onClickHandler, isActive, closeConatiner }) => (
     <div>
         <item.Trigger onClick={onClickHandler} />
-        {isActive && item.children}
-    </div>
+        {isActive ? (<div className="category-container">
+            <span className="close" onClick={closeConatiner}>zamknij</span><div className="category-container-second">{item.children}</div><button className="add-category">dodaj kategorię</button>
+            <div className="note">
+                <label htmlFor="note">
+                    <input type="text" id="note" placeholder="notatka" className="note-input" />
+                </label>
+                <label htmlFor="amount">
+                    <input type="number" placeholder="kwota" className="amount-input" />
+                </label>
+            </div> </div>) : null}
+
+    </div >
 )
 
 function ToggleableList({ items, clickRef }) {
-    const [selectedItem, setSelectedItem] = useState('string');
-
+    const [selectedItem, setSelectedItem] = useState();
     // useEffect(
     //     () => {
     //         clickRef.current = setSelectedItem;
@@ -17,6 +26,12 @@ function ToggleableList({ items, clickRef }) {
     //     [clickRef, setSelectedItem])
 
     // clickRef.current = setSelectedItem;
+
+    const handleCloseConatiner = () => {
+        setSelectedItem({
+            isActive: false,
+        })
+    }
     return (
         <Fragment>
             {items.map(item => (
@@ -24,7 +39,9 @@ function ToggleableList({ items, clickRef }) {
                     key={item.id}
                     item={item}
                     onClickHandler={setSelectedItem}
-                    isActive={selectedItem === item.id} />
+                    isActive={selectedItem === item.id}
+                    closeConatiner={handleCloseConatiner}
+                />
             ))}
         </Fragment>
     )
