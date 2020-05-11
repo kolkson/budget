@@ -2,16 +2,11 @@ import React, { Fragment, useState, useMemo } from 'react';
 import { connect } from 'react-redux';
 import { groupBy } from 'lodash';
 import ToggleableList from '../ToggleableList/ToggleableList';
-import './BudgetList.css'
 
-import MainCategory from './MainCategory';
-import Category from './Category';
+import MainCategory from '../MainCategory';
+import Category from '../Category';
 
-// const MainCategory = ({ category, handlerClick, id }) => (
-//     <div>
-//         <span onClick={() => handlerClick(id)} className={category.name}>{category.name}</span>
-//     </div>
-// )
+
 
 
 
@@ -28,13 +23,13 @@ function BudgetList({ budgetedCategories, allCategories, parentCategories }) {
         Trigger: ({ onClick }) => (
             <MainCategory
                 name={parentName}
+                categories={categories}
                 onClick={() => {
                     onClick(parentName)
                 }}
             />
         ),
         children:
-
             categories.map(category => {
                 const name = category.name
                 return (

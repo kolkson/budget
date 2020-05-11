@@ -1,0 +1,105 @@
+
+
+
+
+.category-container {
+    position: absolute;
+    top:0;
+    left:50%;
+    transform: translateX(-50%);
+ width:80%;
+ height: 400px;
+ background-color: rgb(238, 236, 236,0.9);
+     z-index: 2;
+ }
+ 
+ .close {
+     position: absolute;
+     top:5px;
+     right:10px;
+     font-size: 16px;
+     cursor: pointer;
+     border:2px solid black;
+     color:red;
+     padding: 5px;
+ }
+ 
+ .close:hover{
+     background-color: whitesmoke;
+ }
+ 
+ .category-container-second {
+     display: flex;
+     position:absolute;
+     top:180px;
+     left:50%;
+     transform: translateX(-50%);
+     width:100%;
+     flex-wrap: wrap;
+     justify-content:center;
+     z-index: 10;
+ }
+ 
+ .category {
+     margin:10px 10px;
+     font-size: 20px;
+     cursor: pointer;
+ }
+ 
+ .category:focus{
+     background-color: red;
+ }
+ 
+ .category:hover{
+     background-color: white;
+ }
+ 
+ .category span {
+     display: block;
+     border:2px solid rgb(218, 55, 14);
+     text-transform: capitalize;
+     padding: 10px;
+ }
+ 
+ .add-category {
+     position: absolute;
+     top:50px;
+     left:50%;
+     transform: translateX(-50%);
+     font-size: 20px;
+     background-color: rgb(22, 185, 190);
+     padding: 5px;
+     border:2px solid black;
+     border-radius: 10px;
+     cursor: pointer;
+     transition: .3s;
+ }
+ 
+ .add-category:hover{
+     background-color: teal;
+ }
+ 
+ .note {
+     position: absolute;
+     top:100px;
+   left:50%;
+   transform: translateX(-50%);
+   width: 70%;
+     
+ }
+ 
+ .note-input {
+     width: 100%;
+     height: 25px;
+     background-color: thistle;
+     border:2px solid rgb(207, 142, 142);
+ }
+ 
+ .amount-input {
+     position: absolute;
+     background-color: white;
+     width: 50%;
+     margin-top: 10px;
+     left: 50%;
+     transform: translateX(-50%);
+ }

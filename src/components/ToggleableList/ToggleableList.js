@@ -1,10 +1,10 @@
 import React, { Fragment, useState, useEffect } from 'react';
 
-const Item = ({ item, onClickHandler, isActive, closeConatiner }) => (
+const Item = ({ item, onClickHandler, isActive, closeContainer }) => (
     <div>
         <item.Trigger onClick={onClickHandler} />
         {isActive ? (<div className="category-container">
-            <span className="close" onClick={closeConatiner}>zamknij</span><div className="category-container-second">{item.children}</div><button className="add-category">dodaj kategorię</button>
+            <span className="close" onClick={closeContainer}>zamknij</span><div className="category-container-second">{item.children}</div><button className="add-category">dodaj kategorię</button>
             <div className="note">
                 <label htmlFor="note">
                     <input type="text" id="note" placeholder="notatka" className="note-input" />
@@ -27,7 +27,7 @@ function ToggleableList({ items, clickRef }) {
 
     // clickRef.current = setSelectedItem;
 
-    const handleCloseConatiner = () => {
+    const handleCloseContainer = () => {
         setSelectedItem({
             isActive: false,
         })
@@ -40,7 +40,7 @@ function ToggleableList({ items, clickRef }) {
                     item={item}
                     onClickHandler={setSelectedItem}
                     isActive={selectedItem === item.id}
-                    closeConatiner={handleCloseConatiner}
+                    closeContainer={handleCloseContainer}
                 />
             ))}
         </Fragment>

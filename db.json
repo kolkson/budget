@@ -32,42 +32,50 @@
         {
             "id": "1",
             "name": "Internet",
-            "parentCategoryId": "2"
+            "parentCategoryId": "2",
+            "amount": 39.99
         },
         {
             "id": "2",
             "name": "telefon",
-            "parentCategoryId": "2"
+            "parentCategoryId": "2",
+            "amount": 39.99
         },
         {
             "id": "3",
             "name": "wynajem",
-            "parentCategoryId": "2"
+            "parentCategoryId": "2",
+            "amount": 39.99
         },
         {
             "id": "4",
             "name": "spożywka",
-            "parentCategoryId": "1"
+            "parentCategoryId": "1",
+            "amount": 39.99
         },
         {
             "id": "5",
             "name": "kurczak",
-            "parentCategoryId": "6"
+            "parentCategoryId": "6",
+            "amount": 39.99
         },
         {
             "id": "6",
             "name": "tomorrowland",
-            "parentCategoryId": "4"
+            "parentCategoryId": "4",
+            "amount": 39.99
         },
         {
             "id": "7",
             "name": "benzyna",
-            "parentCategoryId": "3"
+            "parentCategoryId": "3",
+            "amount": 39.99
         },
         {
             "id": "8",
             "name": "leki",
-            "parentCategoryId": "5"
+            "parentCategoryId": "5",
+            "amount": 39.99
         }
     ],
     "budgetCategories": [
