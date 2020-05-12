@@ -1,12 +1,11 @@
 import React from 'react';
 import './Category.css';
 
-export default function Category({ name, item }) {
+export default function Category({ category }) {
     return (
 
         <div className="category">
-            <span>{name}</span>
-            <p>{item.parentCategory.budget}</p>
+            <span>{category.name}</span>
         </div>
 
     )

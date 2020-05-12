@@ -6,7 +6,7 @@ import unitedKingdom from '../../icons/united-kingdom.png'
 import { connect } from 'react-redux';
 import { fetchBudget, fetchBudgetedCategories } from '../../data/actions/budget.actions'
 import { fetchParentCategories, fetchAllCategories } from '../../data/actions/common.actions';
-import BudgetList from '../BudgetList'
+import BudgetList from '../BudgetList/BudgetList'
 
 
 function Budget({ fetchBudget, fetchBudgetedCategories, fetchAllCategories, fetchParentCategories }) {

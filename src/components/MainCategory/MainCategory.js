@@ -1,26 +1,16 @@
 import React, { useMemo } from 'react'
 import './MainCategory.css'
 
-export default function MainCategory({ name, onClick, categories, transactions, parentCategories }) {
-    console.log(categories)
-    // const mainCategoryLeftValue = useMemo(() => {
-    //     const mainCategoryValue = transactions
-    //         .filter(transaction => {
-    //             return categories.find(category => category.categoryd === transaction.categoryId)
-    //         })
-    //     const spentParentCategory = mainCategoryValue
-    //         .reduce((acc, transaction) => acc + transaction.amount, 0)
-    //     const total = spentParentCategory
+export default function MainCategory({ onClick, parentCategory, categories, transactions, parentCategories, children, isActive, value }) {
 
-    //     return total
-    // }, [categories, transactions])
+
 
 
 
     return (
 
         <div className="mainCategory-container">
-            {/* <span onClick={onClick} className={name}> {name}<br />{mainCategoryLeftValue}</span> */}
+            <span onClick={() => onClick(parentCategory.id)} className={parentCategory.name}> {parentCategory.name}<br />{value}{isActive && <span>{children}</span>}</span>
 
         </div>
     )

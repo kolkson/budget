@@ -153,7 +153,7 @@
             "id": "5",
             "description": "Dinner in a restaurant",
             "amount": 35.68,
-            "categoryId": "null",
+            "categoryId": "4",
             "date": "2019-12-22T15:33:11.768Z",
             "budgetId": "1"
         },
@@ -168,7 +168,7 @@
         {
             "description": "Default Agile Workflow",
             "amount": 123,
-            "categoryId": 2,
+            "categoryId": "2",
             "date": "2020-02-13",
             "budgetId": "1",
             "id": "p1tYW2Q"
