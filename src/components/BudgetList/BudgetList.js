@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { connect } from 'react-redux';
 import { groupBy } from 'lodash';
 import ToggleableList from '../ToggleableList/ToggleableList';
@@ -10,50 +10,43 @@ import Category from '../Category';
 
 
 
-function BudgetList({ budgetedCategories, allCategories, parentCategories, transactions }) {
-    console.log(transactions);
-
-    const [seletectItem, setSelectedItem] = useState();
-
-    // const budgetedCategoriesByParent = useMemo(() => groupBy(allCategories, item =>
-    //     allCategories.find(category => category.parentCategoryId === item.parentCategory.id).parentCategory.name), [allCategories])
+function BudgetList({ budgetedCategories, allCategories, parentCategories, budget }) {
 
 
-    const categoriesByParent = allCategories
-        .filter(category => parentCategories.find(parentCategory => parentCategory.id === category.parentCategoryId))
+    const budgetedCategoriesByParent = useMemo(() => groupBy(allCategories, item =>
+        allCategories.find(category => category.parentCategoryId === item.parentCategory.id).parentCategory.name), [allCategories])
 
 
-    // console.log(categoriesByParent);
-    // console.log(budgetedCategoriesByParent);
-
-    // const categories = categoriesByParent.map(category => {
-    //     console.log(category)
-    // })
-
-    const mainCategoryLeftValue = useMemo(() => {
-        // console.log(transactions)
-        console.log(parentCategories)
-        // const mainCategoryValue = transactions
-        //     .filter(transaction => parentCategories.find(parentCategory => parentCategory.id === transaction.categoryId))
+    // const categoriesByParent = allCategories
+    //     .filter(category => parentCategories.find(parentCategory => parentCategory.id === category.parentCategoryId))
 
 
-        // const spentParentCategory = mainCategoryValue
-        //     .reduce((acc, transaction) => acc + transaction.amount, 0)
-        // const total = spentParentCategory
 
-        // return total
-    }, [transactions, parentCategories])
+
+
+
+
+
+
+
+
+
+
+
+    // const [selectedItem, setSelectedItem] = useState()
+
+
+
 
 
     const listItems = parentCategories.map(parentCategory => (
 
         <MainCategory
-            key={parentCategory.id}
             parentCategory={parentCategory}
-            transactions={transactions}
-            onClick={setSelectedItem}
-            isActive={seletectItem === parentCategory.id}
-            value={mainCategoryLeftValue}
+            transactions={budget.transactions}
+            // onClick={setSelectedItem}
+            // isActive={selectedItem === parentCategory.id}
+            categories={allCategories}
         />
 
     ))
@@ -67,8 +60,9 @@ function BudgetList({ budgetedCategories, allCategories, parentCategories, trans
     //     Trigger: ({ onClick }) => (
     //         <MainCategory
     //             name={parentName}
-    //             categories={allCategories}
+    //             categories={categories}
     //             transactions={budget.transactions}
+    //             parentCategories={parentCategories}
     //             onClick={() => {
     //                 onClick(parentName)
     //             }}
@@ -89,16 +83,19 @@ function BudgetList({ budgetedCategories, allCategories, parentCategories, trans
     //         })
 
 
-    // })), [budget.transactions, budgetedCategoriesByParent])
+    // })), [budget.transactions, budgetedCategoriesByParent, parentCategories])
 
 
 
     return (
-        <div className="mainCategories">
-            {/* <ToggleableList
-                items={listItems} /> */}
-            {listItems}
-        </div>
+        <>
+
+            <div className="mainCategories">
+                {/* <ToggleableList
+                    items={listItems} /> */}
+                {listItems}
+            </div>
+        </>
     )
 }
 
@@ -106,5 +103,5 @@ export default connect(state => ({
     budgetedCategories: state.budget.budgetedCategories,
     allCategories: state.common.allCategories,
     parentCategories: state.common.parentCategories,
-    transactions: state.budget.budget.transactions
+    budget: state.budget.budget
 }))(BudgetList)

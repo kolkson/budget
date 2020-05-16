@@ -3,29 +3,32 @@
         {
             "id": "1",
             "name": "żywność",
-            "budget": 39.99
+            "theme": "green"
         },
         {
             "id": "2",
             "name": "rachunki",
-            "budget": 39.99
+            "theme": "red"
         },
         {
             "id": "3",
             "name": "transport",
-            "budget": 39.99
+            "theme": "blue"
         },
         {
             "id": "4",
-            "name": "rozrywka"
+            "name": "rozrywka",
+            "theme": "violet"
         },
         {
             "id": "5",
-            "name": "zdrowie"
+            "name": "zdrowie",
+            "theme": "lightgreen"
         },
         {
             "id": "6",
-            "name": "restauracja"
+            "name": "restauracja",
+            "theme": "yellow"
         }
     ],
     "categories": [

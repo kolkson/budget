@@ -1,7 +1,48 @@
+.add-MainCategory {
+    position: absolute;
+    top:60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.add-MainCategory button {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.add-MainCategory-modal{
+    position: absolute;
+    top:100px;
+    left:0;
+    width: 100%;
+    height: 300px;
+    background-color:white;
+    z-index: 20;
+}
+
+.category-name {
+    position: absolute;
+    top:50px;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.category-name span {
+    display: block;
+}
+
+.add-MainCategory-modal button {
+    position: absolute;
+    top:250px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+}
+
 .mainCategories{
     width:100%;
     position: relative;
-    top:100px;
+    top:150px;
     left:50%;
     transform: translateX(-50%);
     display: flex;
@@ -23,27 +64,70 @@
     cursor: pointer;
 }
 
-.żywność {
+.mainCategory-theme{
+    position: absolute;
+    top:150px;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.mainCategory-theme select {
+   width: 100%;
+}
+
+.mainCategory-theme span {
+    margin-top: 20px;
+    display: block;
+}
+
+option.green {
+    background-color: rgb(24, 218, 24);
+}
+
+option.red {
+    background-color: rgb(218, 55, 14);
+}
+
+option.blue {
+    background-color: rgb(13, 133, 180);
+}
+
+option.violet {
+    background-color: rgb(121, 11, 148);
+}
+
+option.lightgreen {
+    background-color: rgb(19, 226, 99);
+}
+
+option.yellow {
+    background-color: rgb(223, 209, 13);
+}
+
+
+
+
+span.green {
     border:5px solid rgb(24, 218, 24);
 }
 
-.rachunki {
+span.red {
     border:5px solid rgb(218, 55, 14);
 }
 
-.transport {
+span.blue {
     border:5px solid rgb(13, 133, 180);
 }
 
-.rozrywka {
+span.violet {
     border:5px solid rgb(121, 11, 148);
 }
 
-.zdrowie {
+span.lightgreen {
     border:5px solid rgb(19, 226, 99);
 }
 
-.restauracja {
+span.yellow {
     border:5px solid rgb(223, 209, 13);
 }
 

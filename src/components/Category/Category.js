@@ -1,11 +1,11 @@
 import React from 'react';
 import './Category.css';
 
-export default function Category({ category }) {
+export default function Category({ name, key }) {
     return (
 
-        <div className="category">
-            <span>{category.name}</span>
+        <div key={key} className="category">
+            <span>{name}</span>
         </div>
 
     )

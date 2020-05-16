@@ -1,5 +1,5 @@
 export const fetchParentCategories = () => {
-    const promise = fetch(`${process.env.REACT_APP_API_URL}/budgets/1/parentCategories`);
+    const promise = fetch(`${process.env.REACT_APP_API_URL}/parentCategories`);
 
     return promise
 }
@@ -9,3 +9,19 @@ export const fetchAllCategories = () => {
 
     return promise;
 }
+
+export const addMainCategory = ({ data }) => {
+    const promise = fetch(
+        `${process.env.REACT_APP_API_URL}/parentCategories`,
+        {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        }
+    );
+
+    return promise;
+}
+

@@ -1,13 +1,16 @@
 import {
-    ALL_CATEGORIES_GET,
+    // ALL_CATEGORIES_GET,
     ALL_CATEGORIES_GET_REQUEST,
     ALL_CATEGORIES_GET_SUCCESS,
     ALL_CATEGORIES_GET_FAILURE,
 
-    BUDGETED_MAIN_CATEGORIES_GET,
+    // BUDGETED_MAIN_CATEGORIES_GET,
     BUDGETED_MAIN_CATEGORIES_GET_REQUEST,
     BUDGETED_MAIN_CATEGORIES_GET_SUCCESS,
     BUDGETED_MAIN_CATEGORIES_GET_FAILURE,
+
+    MAIN_CATEGORY_ADD_REQUEST,
+    MAIN_CATEGORY_ADD_SUCCESS,
 
     LOADING_STATES,
 } from '../constants'
@@ -67,6 +70,25 @@ function common(state = initalState, action) {
                 ...state,
                 allCategories: [],
                 loadingState: newLoadingState,
+            }
+
+        case MAIN_CATEGORY_ADD_REQUEST:
+            return {
+                ...state,
+                loadingState: {
+                    ...state.loadingState,
+                    [action.type]: LOADING_STATES.LOADING
+                }
+            }
+        case MAIN_CATEGORY_ADD_SUCCESS:
+            delete newLoadingState.MAIN_CATEGORY_ADD_REQUEST
+            return {
+                ...state,
+                parentCategories: [
+                    action.payload,
+                    ...state.parentCategories
+                ],
+                loadingState: newLoadingState
             }
 
         default:
