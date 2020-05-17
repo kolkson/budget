@@ -1,0 +1,12 @@
+.transactions-container{
+    margin-top: 200px;
+}
+
+.transactions-container ul {
+    display:flex;
+    list-style: none;
+}
+
+.transactions-container ul li {
+    flex-basis: 25%;
+}

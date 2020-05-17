@@ -14,3 +14,14 @@ body{
     flex-basis: 30%;
 }
 
+.close {
+    position: absolute;
+    top:5px;
+    right:10px;
+    font-size: 16px;
+    cursor: pointer;
+    border:2px solid black;
+    color:red;
+    padding: 5px;
+}
+

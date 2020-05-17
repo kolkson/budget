@@ -1,30 +1,63 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import Wrapper from '../Wrapper';
 import './Budget.css';
 import poland from '../../icons/poland.png'
 import unitedKingdom from '../../icons/united-kingdom.png'
 import { connect } from 'react-redux';
-import { fetchBudget, fetchBudgetedCategories } from '../../data/actions/budget.actions'
+import { fetchBudget, fetchBudgetedCategories, fetchTransactions } from '../../data/actions/budget.actions'
 import { fetchParentCategories, fetchAllCategories, addMainCategory } from '../../data/actions/common.actions';
-import BudgetList from '../BudgetList/BudgetList'
 import AddMainCategory from '../MainCategory/AddMainCategory';
+import MainCategory from '../MainCategory';
+import AddTransaction from '../AddTransaction';
+import Transaction from '../Transaction'
 
 
-function Budget({ fetchBudget, fetchBudgetedCategories, fetchAllCategories, fetchParentCategories, addMainCategory }) {
+function Budget({
+    fetchBudget, fetchBudgetedCategories, fetchAllCategories, fetchParentCategories, addMainCategory,
+    budgetedCategories, allCategories, parentCategories, budget, transactions, fetchTransactions }) {
+
+    console.log(transactions)
 
     useEffect(() => {
         fetchBudget(1);
         fetchBudgetedCategories(1);
         fetchAllCategories();
         fetchParentCategories();
-    }, [fetchBudget, fetchBudgetedCategories, fetchAllCategories, fetchParentCategories])
+        fetchTransactions();
+    }, [fetchBudget, fetchBudgetedCategories, fetchAllCategories, fetchParentCategories, fetchTransactions])
+
+    const [selectedItem, setSelectedItem] = useState()
 
     const handleAddMainCategory = (values) => {
-        console.log(values)
         addMainCategory({
             data: values,
         })
     }
+
+
+
+    const mainCategoriesList = useMemo(() => parentCategories.map(parentCategory =>
+        <>
+            <MainCategory
+                parentCategory={parentCategory}
+                transactions={budget.transactions}
+                onClick={setSelectedItem}
+                categories={allCategories}
+            />
+            {selectedItem === parentCategory.id && <AddTransaction
+                onClick={setSelectedItem}
+                categories={allCategories}
+                parentCategory={parentCategory}
+            />}
+        </>
+    ), [allCategories, budget.transactions, parentCategories, selectedItem])
+
+    const transactionsList = useMemo(() => transactions.map(transaction =>
+        <Transaction
+            transaction={transaction}
+        />
+    ), [transactions])
+
 
     return (
         <Wrapper>
@@ -35,14 +68,30 @@ function Budget({ fetchBudget, fetchBudgetedCategories, fetchAllCategories, fetc
             <AddMainCategory
                 onSubmit={handleAddMainCategory}
             />
-            <BudgetList />
+            <div className="mainCategories">
+                {mainCategoriesList}
+            </div>
+            <div className="transactions-container">
+                <h2>Historia transakcji:</h2>
+                <ul>
+                    <li>Nazwa</li>
+                    <li>Data</li>
+                    <li>Kwota</li>
+                    <li>Kategoria</li>
+                </ul>
+                {transactionsList}
+            </div>
         </Wrapper>
     )
 }
 
 export default connect(state => {
     return {
-        // budget: state.budget.budget
+        budgetedCategories: state.budget.budgetedCategories,
+        allCategories: state.common.allCategories,
+        parentCategories: state.common.parentCategories,
+        budget: state.budget.budget,
+        transactions: state.budget.transactions
     }
 },
     {
@@ -50,5 +99,6 @@ export default connect(state => {
         fetchBudgetedCategories,
         fetchAllCategories,
         fetchParentCategories,
+        fetchTransactions,
         addMainCategory
     })(Budget)

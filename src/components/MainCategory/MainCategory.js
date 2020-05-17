@@ -1,13 +1,11 @@
 import React, { useMemo } from 'react'
 import './MainCategory.css';
 import { groupBy } from 'lodash';
-
-export default function MainCategory({ onClick, key, parentCategory, categories, transactions, parentCategories, name, isActive }) {
-
+export default function MainCategory({ onClick, key, parentCategory, transactions }) {
 
 
 
-    // console.log(categoriesByParentName)
+
 
     // const mainCategoryLeftValue = useMemo(() => {
     //     const mainCategoryValue = (() => {
@@ -36,7 +34,8 @@ export default function MainCategory({ onClick, key, parentCategory, categories,
     return (
 
         <div className="mainCategory-container">
-            <span onClick={onClick} className={parentCategory.theme}>{parentCategory.name} </span>
+            <span onClick={() => onClick(parentCategory.id)} className={parentCategory.theme}>{parentCategory.name} </span>
         </div>
+
     )
 }

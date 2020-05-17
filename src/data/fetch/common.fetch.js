@@ -25,3 +25,16 @@ export const addMainCategory = ({ data }) => {
     return promise;
 }
 
+export const addCategory = ({ parentCategoryId, data }) => {
+    const promise = fetch(
+        `${process.env.REACT_APP_API_URL}/parentCategories/${parentCategoryId}/categories`,
+        {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data),
+        });
+    return promise
+}
+

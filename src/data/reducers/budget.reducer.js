@@ -8,6 +8,10 @@ import {
     BUDGETED_CATEGORIES_GET_SUCCESS,
     BUDGETED_CATEGORIES_GET_FAILURE,
 
+    TRANSACTIONS_GET_REQUEST,
+    TRANSACTIONS_GET_SUCCESS,
+    TRANSACTIONS_GET_FAILURE,
+
 
 
     LOADING_STATES,
@@ -17,6 +21,7 @@ const initalState = {
     loadingState: {},
     budget: {},
     budgetedCategories: [],
+    transactions: []
 }
 
 function budget(state = initalState, action) {
@@ -67,6 +72,28 @@ function budget(state = initalState, action) {
             return {
                 ...state,
                 budgetedCategories: {},
+                loadingState: newLoadingState
+            }
+        case TRANSACTIONS_GET_REQUEST:
+            return {
+                ...state,
+                loadingState: {
+                    ...state.loadingState,
+                    [action.type]: LOADING_STATES.LOADING
+                }
+            }
+        case TRANSACTIONS_GET_SUCCESS:
+            delete newLoadingState.TRANSACTIONS_GET_REQUEST
+            return {
+                ...state,
+                transactions: action.payload,
+                loadingState: newLoadingState
+            }
+        case TRANSACTIONS_GET_FAILURE:
+            delete newLoadingState.TRANSACTIONS_GET_REQUEST
+            return {
+                ...state,
+                transactions: [],
                 loadingState: newLoadingState
             }
 

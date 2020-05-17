@@ -10,3 +10,11 @@ export const fetchBudgetedCategories = (id) => {
     return promise;
 }
 
+export const fetchTransactions = () => {
+    const promise = fetch(`${process.env.REACT_APP_API_URL}/transactions`);
+
+    return promise
+}
+
+
+

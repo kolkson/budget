@@ -12,6 +12,9 @@ import {
     MAIN_CATEGORY_ADD_REQUEST,
     MAIN_CATEGORY_ADD_SUCCESS,
 
+    CATEGORY_ADD_REQUEST,
+    CATEGORY_ADD_SUCCESS,
+
     LOADING_STATES,
 } from '../constants'
 
@@ -90,7 +93,28 @@ function common(state = initalState, action) {
                 ],
                 loadingState: newLoadingState
             }
+        case CATEGORY_ADD_REQUEST:
+            return {
+                ...state,
+                loadingState: {
+                    ...state.loadingState,
+                    [action.type]: LOADING_STATES.LOADING,
+                }
+            }
+        case CATEGORY_ADD_SUCCESS:
+            delete newLoadingState.CATEGORY_ADD_REQUEST
+            return {
+                ...state,
 
+
+                allCategories: [
+                    action.payload,
+                    ...state.allCategories,
+                ]
+                ,
+                loadingState: newLoadingState,
+
+            }
         default:
             return state;
     }
