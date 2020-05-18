@@ -16,5 +16,11 @@ export const fetchTransactions = () => {
     return promise
 }
 
+export const addTransactions = ({ parentCategoryId, data }) => {
+    const promise = fetch(`${process.env.REACT_APP_API_URL}/parentCategories/${parentCategoryId}transactions`);
+
+    return promise
+}
+
 
 
