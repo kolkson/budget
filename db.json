@@ -156,7 +156,7 @@
             "id": "5",
             "description": "Dinner in a restaurant",
             "amount": 35.68,
-            "categoryId": "4",
+            "parentCategoryId": "4",
             "date": "2019-12-22T15:33:11.768Z",
             "budgetId": "1"
         },
