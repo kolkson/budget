@@ -11,16 +11,40 @@ export const fetchBudgetedCategories = (id) => {
 }
 
 export const fetchTransactions = () => {
-    const promise = fetch(`${process.env.REACT_APP_API_URL}/transactions`);
+    const promise = fetch(`${process.env.REACT_APP_API_URL}/transactions/?_expand=parentCategory`);
 
     return promise
 }
 
-export const addTransactions = ({ parentCategoryId, data }) => {
-    const promise = fetch(`${process.env.REACT_APP_API_URL}/parentCategories/${parentCategoryId}transactions`);
-
+export const addTransaction = ({ parentCategoryId, data, color }) => {
+    const promise = fetch(
+        `${process.env.REACT_APP_API_URL}/parentCategories/${parentCategoryId}/transactions`,
+        {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data),
+        }, {
+    });
     return promise
 }
 
+
+export const removeTransaction = ({ id }) => {
+    const promise = fetch(
+        `${process.env.REACT_APP_API_URL}/transactions/${id}`,
+        {
+            method: "DELETE",
+            header: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+
+            },
+        }
+    );
+
+    return promise;
+}
 
 

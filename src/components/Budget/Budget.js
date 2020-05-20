@@ -16,7 +16,6 @@ function Budget({
     fetchBudget, fetchBudgetedCategories, fetchAllCategories, fetchParentCategories, addMainCategory,
     budgetedCategories, allCategories, parentCategories, budget, transactions, fetchTransactions }) {
 
-    console.log(transactions)
 
     useEffect(() => {
         fetchBudget(1);
@@ -36,6 +35,8 @@ function Budget({
 
 
 
+
+
     const mainCategoriesList = useMemo(() => parentCategories.map(parentCategory =>
         <>
             <MainCategory
@@ -43,18 +44,23 @@ function Budget({
                 transactions={budget.transactions}
                 onClick={setSelectedItem}
                 categories={allCategories}
+                id={parentCategory.id}
             />
             {selectedItem === parentCategory.id && <AddTransaction
                 onClick={setSelectedItem}
                 categories={allCategories}
                 parentCategory={parentCategory}
+                id={parentCategory.id}
             />}
         </>
     ), [allCategories, budget.transactions, parentCategories, selectedItem])
 
+
+
     const transactionsList = useMemo(() => transactions.map(transaction =>
         <Transaction
             transaction={transaction}
+            id={transaction.id}
         />
     ), [transactions])
 
@@ -100,5 +106,5 @@ export default connect(state => {
         fetchAllCategories,
         fetchParentCategories,
         fetchTransactions,
-        addMainCategory
+        addMainCategory,
     })(Budget)

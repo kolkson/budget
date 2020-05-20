@@ -123,4 +123,11 @@ label.yellow {
      background-color: turquoise;
  }
 
+ .date {
+     position: absolute;
+     top:240px;
+     left:50%;
+     transform: translateX(-50%);
+ }
+
  

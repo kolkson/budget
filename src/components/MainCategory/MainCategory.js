@@ -1,7 +1,10 @@
 import React, { useMemo } from 'react'
 import './MainCategory.css';
 import { groupBy } from 'lodash';
-export default function MainCategory({ onClick, key, parentCategory, transactions }) {
+import { addCategory } from '../../data/actions/common.actions';
+import { connect } from 'react-redux';
+
+function MainCategory({ onClick, key, parentCategory, transactions, id }) {
 
 
 
@@ -34,8 +37,19 @@ export default function MainCategory({ onClick, key, parentCategory, transaction
     return (
 
         <div className="mainCategory-container">
-            <span onClick={() => onClick(parentCategory.id)} className={parentCategory.theme}>{parentCategory.name} </span>
+            <span onClick={() => onClick(parentCategory.id)} className={parentCategory.theme}>
+                {parentCategory.name} <button >Usuń kategorię</button></span>
+
         </div>
 
     )
 }
+
+export default connect(state => {
+    return {
+        // budget: state.budget.budget
+    }
+},
+    {
+
+    })(MainCategory)

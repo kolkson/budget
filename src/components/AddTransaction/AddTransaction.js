@@ -5,13 +5,15 @@ import { Form, Field } from 'react-final-form';
 import { noop } from 'lodash';
 import AddCategory from '../AddCategory';
 import { addCategory } from '../../data/actions/common.actions';
+import { addTransaction } from '../../data/actions/budget.actions';
 
 const required = value => (value ? undefined : 'To pole jest wymagane')
 
 
-function AddTransaction({ onClick, categories, parentCategory, addCategory, key }) {
+function AddTransaction({ onClick, categories, parentCategory, addCategory, key, addTransaction, id }) {
     const [modal, setModal] = useState(false)
-    const [selectedCategory, setSelectedCategory] = useState()
+
+
     const openModal = () => {
         setModal(true)
     }
@@ -28,8 +30,15 @@ function AddTransaction({ onClick, categories, parentCategory, addCategory, key 
         closeModal()
     }
 
-    const onClickSubmit = (values) => {
-        console.log(values)
+
+
+    const handleAddTranasction = (values) => {
+        addTransaction({
+            parentCategoryId: parentCategory.id,
+            data: values,
+            color: parentCategory.theme
+        })
+        closeModal()
     }
 
 
@@ -39,11 +48,12 @@ function AddTransaction({ onClick, categories, parentCategory, addCategory, key 
             <div className="category-container">
                 <span onClick={() => onClick()} className="close" >zamknij</span>
                 <button onClick={openModal} className="add-category">dodaj kategorię</button>
+
                 <Form
-                    onSubmit={onClickSubmit}
+                    onSubmit={handleAddTranasction}
                     render={({ handleSubmit, form, submitting, pristine, values }) => (
                         <form onSubmit={handleSubmit}>
-                            <Field name="name" validate={required}>
+                            <Field name="description" validate={required}>
                                 {({ input, meta }) => (
                                     <div className="note">
 
@@ -78,6 +88,16 @@ function AddTransaction({ onClick, categories, parentCategory, addCategory, key 
                                 )}
                             </Field>
 
+                            <Field name="date" validate={required}>
+                                {({ input, meta }) => (
+                                    <div className="date">
+
+                                        <input {...input} type="date" placeholder="date" className="note-input" />
+                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                    </div>
+                                )}
+                            </Field>
+
                             <div>
                                 <button type="submit" className="addTransaction-btn" disabled={submitting}>
                                     Dodaj
@@ -104,5 +124,6 @@ export default connect(state => {
     }
 },
     {
-        addCategory
+        addCategory,
+        addTransaction,
     })(AddTransaction)

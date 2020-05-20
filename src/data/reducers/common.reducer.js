@@ -15,6 +15,9 @@ import {
     CATEGORY_ADD_REQUEST,
     CATEGORY_ADD_SUCCESS,
 
+    MAIN_CATEGORY_REMOVE_REQUEST,
+    MAIN_CATEGORY_REMOVE_SUCCESS,
+
     LOADING_STATES,
 } from '../constants'
 
@@ -93,6 +96,7 @@ function common(state = initalState, action) {
                 ],
                 loadingState: newLoadingState
             }
+
         case CATEGORY_ADD_REQUEST:
             return {
                 ...state,
@@ -111,8 +115,7 @@ function common(state = initalState, action) {
                     action.payload,
                     ...state.allCategories,
                 ]
-                ,
-                loadingState: newLoadingState,
+
 
             }
         default:

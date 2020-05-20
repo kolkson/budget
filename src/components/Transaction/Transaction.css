@@ -10,3 +10,28 @@
 .transactions-container ul li {
     flex-basis: 25%;
 }
+
+li.green {
+    color: rgb(24, 218, 24);
+}
+
+li.red {
+    color: rgb(218, 55, 14);
+}
+
+li.blue {
+    color: rgb(13, 133, 180);
+}
+
+li.violet {
+    color: rgb(121, 11, 148);
+}
+
+
+li.lightgreen {
+    color: rgb(19, 226, 99);
+}
+
+li.yellow {
+    color: rgb(223, 209, 13);
+}

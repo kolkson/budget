@@ -12,6 +12,12 @@ import {
     TRANSACTIONS_GET_SUCCESS,
     TRANSACTIONS_GET_FAILURE,
 
+    TRANSACTION_ADD_REQUEST,
+    TRANSACTION_ADD_SUCCESS,
+
+    TRANSACTION_DELETE_REQUEST,
+    TRANSACTION_DELETE_SUCCESS,
+
 
 
     LOADING_STATES,
@@ -96,7 +102,46 @@ function budget(state = initalState, action) {
                 transactions: [],
                 loadingState: newLoadingState
             }
+        case TRANSACTION_ADD_REQUEST:
+            return {
+                ...state,
+                loadingState: {
+                    ...state.loadingState,
+                    [action.type]: LOADING_STATES.LOADING
+                }
+            }
+        case TRANSACTION_ADD_SUCCESS:
+            delete newLoadingState.TRANSACTION_ADD_REQUEST
+            return {
+                ...state,
 
+
+                transactions: [
+                    action.payload,
+                    ...state.transactions,
+                ]
+                ,
+                loadingState: newLoadingState,
+            }
+        case TRANSACTION_DELETE_REQUEST:
+            return {
+                ...state,
+                loadingState: {
+                    ...state.loadingState,
+                    [action.type]: LOADING_STATES.LOADING
+                }
+            }
+        case TRANSACTION_DELETE_SUCCESS:
+            delete newLoadingState.TRANSACTION_DELETE_REQUEST
+            return {
+                ...state,
+                transactions: [
+                    ...state.transactions
+                ],
+
+
+                loadingState: newLoadingState
+            }
         default:
             return state;
     }

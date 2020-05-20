@@ -3,6 +3,7 @@ import {
     BUDGETED_MAIN_CATEGORIES_GET,
     MAIN_CATEGORY_ADD,
     CATEGORY_ADD,
+    MAIN_CATEGORY_REMOVE
 } from '../constants'
 import API from '../fetch'
 
@@ -24,6 +25,8 @@ export const addMainCategory = ({ data }) => {
         promise
     }
 }
+
+
 
 export const addCategory = ({ parentCategoryId, data }) => {
     const promise = API.common.addCategory({
