@@ -120,7 +120,7 @@
   ],
   "transactions": [
     {
-      "id": "2",
+      "id": "1",
       "description": "Mobile network provider",
       "amount": 39.99,
       "parentCategoryId": "2",
@@ -128,7 +128,7 @@
       "budgetId": "1"
     },
     {
-      "id": "3",
+      "id": "2",
       "description": "Weekly shoping",
       "amount": 23.88,
       "parentCategoryId": "6",
@@ -136,7 +136,7 @@
       "budgetId": "1"
     },
     {
-      "id": "4",
+      "id": "3",
       "description": "Weekly shoping #2",
       "amount": 12.48,
       "parentCategoryId": "6",
@@ -144,7 +144,7 @@
       "budgetId": "1"
     },
     {
-      "id": "5",
+      "id": "4",
       "description": "Dinner in a restaurant",
       "amount": 35.68,
       "parentCategoryId": "4",

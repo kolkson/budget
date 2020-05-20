@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useMemo } from 'react';
 import Wrapper from '../Wrapper';
 import './Budget.css';
 import poland from '../../icons/poland.png'
 import unitedKingdom from '../../icons/united-kingdom.png'
 import { connect } from 'react-redux';
-import { fetchBudget, fetchBudgetedCategories, fetchTransactions } from '../../data/actions/budget.actions'
+import { fetchBudget, fetchBudgetedCategories, fetchTransactions, removeTransaction } from '../../data/actions/budget.actions'
 import { fetchParentCategories, fetchAllCategories, addMainCategory } from '../../data/actions/common.actions';
 import AddMainCategory from '../MainCategory/AddMainCategory';
 import MainCategory from '../MainCategory';
@@ -14,8 +15,7 @@ import Transaction from '../Transaction'
 
 function Budget({
     fetchBudget, fetchBudgetedCategories, fetchAllCategories, fetchParentCategories, addMainCategory,
-    budgetedCategories, allCategories, parentCategories, budget, transactions, fetchTransactions }) {
-
+    budgetedCategories, allCategories, parentCategories, budget, transactions, fetchTransactions, removeTransaction }) {
 
     useEffect(() => {
         fetchBudget(1);
@@ -31,6 +31,11 @@ function Budget({
         addMainCategory({
             data: values,
         })
+    }
+
+    const deleteTransactions = (id) => {
+        removeTransaction(id)
+        transactions.filter(transaction => transaction.id !== id)
     }
 
 
@@ -61,8 +66,9 @@ function Budget({
         <Transaction
             transaction={transaction}
             id={transaction.id}
+            onClick={deleteTransactions}
         />
-    ), [transactions])
+    ), [transactions, deleteTransactions])
 
 
     return (
@@ -107,4 +113,5 @@ export default connect(state => {
         fetchParentCategories,
         fetchTransactions,
         addMainCategory,
+        removeTransaction
     })(Budget)

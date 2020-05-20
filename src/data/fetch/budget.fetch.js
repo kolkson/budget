@@ -31,7 +31,7 @@ export const addTransaction = ({ parentCategoryId, data, color }) => {
 }
 
 
-export const removeTransaction = ({ id }) => {
+export const removeTransaction = (id) => {
     const promise = fetch(
         `${process.env.REACT_APP_API_URL}/transactions/${id}`,
         {

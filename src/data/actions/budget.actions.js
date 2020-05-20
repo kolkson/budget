@@ -38,13 +38,15 @@ export const fetchTransactions = () => {
     })
 
 }
-export const removeTransaction = ({ id }) => {
-    const promise = API.budget.removeTransaction({ id })
+export const removeTransaction = (id) => {
+    const promise = API.budget.removeTransaction(id)
 
     return {
         type: TRANSACTION_DELETE,
+        payload: id,
         promise
     }
+
 }
 
 export const addTransaction = ({ parentCategoryId, data, color }) => {

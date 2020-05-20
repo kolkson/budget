@@ -1,18 +1,13 @@
 import React, { useMemo } from 'react';
 import './Transaction.css';
 import formatDate from '../../themes'
-import { removeTransaction } from '../../data/actions/budget.actions';
+// import { removeTransaction } from '../../data/actions/budget.actions';
 import { connect } from 'react-redux';
 
 
-function Transaction({ transaction, parentCategories, removeTransaction, id }) {
+function Transaction({ transaction, parentCategories, id, onClick }) {
 
-    const handleRemoveMainCategory = (id) => {
-        removeTransaction({
-            id: id,
-        })
-        console.log(id)
-    }
+
 
     return (
         <div className="transactions">
@@ -21,7 +16,7 @@ function Transaction({ transaction, parentCategories, removeTransaction, id }) {
                     <span>({transaction.theme}) </span> : null} </li>
                 <li></li>
                 <li>{transaction.amount}</li>
-                <li><button onClick={() => handleRemoveMainCategory(transaction.id)}>usuń </button></li>
+                <li><button onClick={() => onClick(id)}>usuń </button></li>
             </ul>
         </div>
     )
@@ -34,5 +29,5 @@ export default connect(state => {
 },
     {
 
-        removeTransaction
+
     })(Transaction)

@@ -23,6 +23,7 @@ import {
     LOADING_STATES,
 } from '../constants'
 
+
 const initalState = {
     loadingState: {},
     budget: {},
@@ -133,13 +134,10 @@ function budget(state = initalState, action) {
             }
         case TRANSACTION_DELETE_SUCCESS:
             delete newLoadingState.TRANSACTION_DELETE_REQUEST
+            console.log(action.payload)
             return {
                 ...state,
-                transactions: [
-                    ...state.transactions
-                ],
-
-
+                transactions: state.transactions.filter(transaction => transaction.id !== action.payload),
                 loadingState: newLoadingState
             }
         default:
