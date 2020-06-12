@@ -10,7 +10,6 @@ import MainCategory from '../MainCategory';
 import AddTransaction from '../AddTransaction';
 import Transaction from '../Transaction';
 import Chart from '../Chart'
-import Pagination from '../Pagination';
 
 
 function Budget({
@@ -37,17 +36,6 @@ function Budget({
     }
 
 
-    const [currentPage, setCurrentPage] = useState(1)
-    const [transactionsPerPage] = useState(5)
-
-    const indexOfLastTransaction = currentPage * transactionsPerPage;
-    const indexOfFirstTransaction = indexOfLastTransaction - transactionsPerPage;
-    const currentTransactions = transactions.slice(indexOfFirstTransaction, indexOfLastTransaction);
-
-    const paginate = (pageNumber) => {
-        setCurrentPage(pageNumber)
-    }
-
     const mainCategoriesList = useMemo(() => parentCategories.map(parentCategory => {
 
         return (
@@ -70,7 +58,7 @@ function Budget({
 
     }), [allCategories, transactions, parentCategories, selectedItem])
 
-    const transactionsList = useMemo(() => currentTransactions.map(transaction =>
+    const transactionsList = useMemo(() => transactions.map(transaction =>
         <Transaction
             transaction={transaction}
             deleteTransaction={deleteTransactions}
@@ -96,13 +84,7 @@ function Budget({
                 </ul>
                 {transactionsList}
             </div>
-            <div>
-                <Pagination
-                    transactionsPerPage={transactionsPerPage}
-                    totalTransactions={transactions.length}
-                    paginate={paginate}
-                />
-            </div>
+
             <div className="chart">
                 <Chart
                     parentCategories={parentCategories}
