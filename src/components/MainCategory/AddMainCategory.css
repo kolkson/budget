@@ -1,0 +1,171 @@
+.add-MainCategory {
+    position: absolute;
+    top:60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.add-MainCategory button {
+    font-size: 20px;
+    width:230px;    
+}
+
+.addCategory{
+    height: 40px;
+    cursor: pointer;
+    background-color: rgb(66, 172, 221);
+    border:none;
+    border-radius:5px;
+    transition: .3s;
+}
+
+.addCategory:hover{
+    background-color: rgb(38, 126, 214);
+}
+
+.addCategory:focus{
+    outline: none;
+}
+
+.addMainCateory-modal {
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:100vh;
+    background-color: rgba(216, 212, 213, 0.8);
+    z-index:30;
+}
+
+.add-MainCategory-modal{
+    position: absolute;
+    top:150px;
+    left:50%;
+    width: 80%;
+    height: 300px;
+    transform: translateX(-50%);
+    background-color:white;
+    z-index: 20;
+}
+
+.mainCategory-name {
+    position: absolute;
+    top:70px;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.mainCategory-name input {
+    width:150px;
+    height:20px;
+    line-height: 20px;
+    border:2px solid rgb(139, 134, 134);
+}
+
+.mainCategory-theme{
+    position: absolute;
+    top:150px;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.mainCategory-theme select {
+   width: 150px;
+   border: 2px solid rgb(139, 134, 134);
+}
+
+
+.add-MainCategory-modal button {
+    position: absolute;
+    top:230px;
+    left: 50%;
+    transform: translateX(-50%);
+    width:100px;
+}
+
+.add{
+    background-color: rgb(43, 230, 167);
+    font-size: 20px;
+    height: 40px;
+    line-height: 20px;
+    border:none;
+    padding: 7px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.add:hover{
+background-color: rgb(32, 177, 141);
+}
+
+.add:focus{
+    outline: none;
+}
+
+.add-MainCategory-modal span {
+    margin-top: 2px;
+    display: block;
+    color:rgb(212, 19, 19);
+}
+
+
+option.green {
+    background-color: green;
+}
+
+option.red {
+    background-color: red;
+}
+
+option.blue {
+    background-color: blue;
+}
+
+option.violet {
+    background-color: violet;
+}
+
+
+option.lightgreen {
+    background-color: lightgreen;
+}
+
+option.yellow {
+    background-color: yellow;
+}
+
+@media (min-width:700px){
+    .add-MainCategory-modal{
+        top:200px;
+        height: 350px;
+    }
+    .mainCategory-name input{
+        width:300px;
+        height: 30px;
+    }
+    .mainCategory-theme select{
+        width:300px;
+        height: 30px;
+    }
+    .add-MainCategory-modal button {
+        top:270px;
+    }
+}
+
+
+@media (min-width:1440px){
+    
+    .mainCategory-name input{
+        width:350px;
+        height: 30px;
+    }
+    .mainCategory-theme select{
+        width:350px;
+        height: 30px;
+    }
+    .add-MainCategory-modal button {
+        top:270px;
+        width:150px;
+    }
+}

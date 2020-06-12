@@ -6,14 +6,9 @@
       "theme": "green"
     },
     {
-      "id": "2",
       "name": "rachunki",
-      "theme": "red"
-    },
-    {
-      "id": "3",
-      "name": "transport",
-      "theme": "blue"
+      "theme": "red",
+      "id": "2"
     },
     {
       "id": "4",
@@ -73,99 +68,50 @@
       "parentCategoryId": "5"
     }
   ],
-  "budgetCategories": [
-    {
-      "id": "1",
-      "budget": 120.47,
-      "categoryId": "1",
-      "budgetId": "1"
-    },
-    {
-      "id": "2",
-      "budget": 39.99,
-      "categoryId": "2",
-      "budgetId": "1"
-    },
-    {
-      "id": "3",
-      "budget": 723,
-      "categoryId": "3",
-      "budgetId": "1"
-    },
-    {
-      "id": "4",
-      "budget": 30,
-      "categoryId": "4",
-      "budgetId": "1"
-    },
-    {
-      "id": "5",
-      "budget": 450,
-      "categoryId": "5",
-      "budgetId": "1"
-    },
-    {
-      "id": "6",
-      "budget": 80,
-      "categoryId": "6",
-      "budgetId": "1"
-    }
-  ],
-  "budgets": [
-    {
-      "id": "1",
-      "name": "April",
-      "totalAmount": 2400
-    }
-  ],
   "transactions": [
     {
       "id": "1",
-      "description": "Mobile network provider",
-      "amount": 39.99,
-      "parentCategoryId": "2",
-      "date": "2019-12-10T13:33:21.768Z",
-      "budgetId": "1"
+      "description": "Weekly shoping",
+      "amount": 23.88,
+      "parentCategoryId": "4",
+      "date": "2019-12-17T15:41:01.768Z"
     },
     {
       "id": "2",
-      "description": "Weekly shoping",
-      "amount": 23.88,
-      "parentCategoryId": "6",
-      "date": "2019-12-17T15:41:01.768Z",
-      "budgetId": "1"
-    },
-    {
-      "id": "3",
       "description": "Weekly shoping #2",
       "amount": 12.48,
       "parentCategoryId": "6",
-      "date": "2019-12-17T12:41:01.768Z",
-      "budgetId": "1"
+      "date": "2019-12-17T12:41:01.768Z"
+    },
+    {
+      "id": "3",
+      "description": "Dinner in a restaurant",
+      "amount": 35.68,
+      "parentCategoryId": "6",
+      "date": "2019-12-22T15:33:11.768Z"
     },
     {
       "id": "4",
-      "description": "Dinner in a restaurant",
-      "amount": 35.68,
-      "parentCategoryId": "4",
-      "date": "2019-12-22T15:33:11.768Z",
-      "budgetId": "1"
-    },
-    {
-      "id": "5",
       "description": "Grocery shopping #1",
       "amount": 12.38,
       "parentCategoryId": "5",
-      "date": "2019-12-18T13:38:41.768Z",
-      "budgetId": "1"
+      "date": "2019-12-18T13:38:41.768Z"
     },
     {
-      "description": "Default Agile Workflow",
+      "description": "Phone",
       "amount": 123,
+      "category": "phone",
       "parentCategoryId": "2",
       "date": "2020-02-13",
-      "budgetId": "1",
       "id": "p1tYW2Q"
+    },
+    {
+      "id": "5",
+      "description": "Jazda nad morze",
+      "category": "benzyna",
+      "amount": 255,
+      "parentCategoryId": "5",
+      "date": "2019-12-18T13:38:41.768Z"
     }
   ]
 }

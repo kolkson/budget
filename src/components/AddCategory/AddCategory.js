@@ -13,28 +13,25 @@ export default function AddCategory({ closeModal, onSubmit = noop }) {
 
                 <Form
                     onSubmit={onSubmit}
-                    render={({ handleSubmit, form, submitting, pristine, values }) => (
+                    render={({ handleSubmit, submitting }) => (
                         <form onSubmit={handleSubmit}>
                             <Field name="name" validate={required}>
                                 {({ input, meta }) => (
                                     <div className="category-name">
 
-                                        <input {...input} type="text" placeholder="Description" />
+                                        <input {...input} type="text" placeholder="nazwa" className="category-name-input" />
                                         {meta.error && meta.touched && <span>{meta.error}</span>}
                                     </div>
                                 )}
                             </Field>
-
                             <div>
-                                <button type="submit" disabled={submitting}>
+                                <button className="add" type="submit" disabled={submitting}>
                                     Dodaj
                                 </button>
-
                             </div>
                         </form>
                     )}
                 />
-
             </div>
         </>
 

@@ -1,133 +1,188 @@
-
-
-
-
-.category-container {
+.addTransaction-modal{
     position: absolute;
-    top:0;
+    top:-150px;
+    left:0;
+    right:0;
+    min-height: 800px;
+    background-color: rgba(216, 212, 213, 0.8);
+    z-index:30;
+}
+
+.addTransaction-container {
+    position: absolute;
+    top:80px;
     left:50%;
     transform: translateX(-50%);
  width:80%;
- height: 400px;
- background-color: rgb(238, 236, 236,0.9);
+ min-height: 400px;
+ background-color: white;
      z-index: 2;
  }
  
- 
- 
- .close:hover{
-     background-color: whitesmoke;
- }
- 
- .category-container-second {
+ .categoryList{
+     margin-top: 20px;
+     margin-left: 10px;
+     width: 80%;
      display: flex;
-     position:absolute;
-     top:180px;
-     left:50%;
-     transform: translateX(-50%);
-     width:100%;
      flex-wrap: wrap;
-     justify-content:center;
-     z-index: 10;
  }
- 
- .category {
-     
-     margin:10px 10px;
-     font-size: 20px;
+ .categoryName{
+     width: 100%;
+     margin-top: 10px;
+     margin-left: 20px;
  }
 
  .category label{
+     font-size:18px;
      cursor: pointer;
  }
  
- 
+ .category-delete {
+    position: absolute;
+    right:10px;
+    font-size: 16px;
+    color:rgb(110, 12, 12);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.category-delete:hover{
+    color: rgb(163, 16, 16);
+}
  label.green {
-    color: rgb(24, 218, 24);
+    color: green;
 }
 
 label.red {
-    color: rgb(218, 55, 14);
+    color: red;
 }
 
 label.blue {
-    color: rgb(13, 133, 180);
+    color: blue;
 }
 
 label.violet {
-    color: rgb(121, 11, 148);
+    color: violet;
 }
 
-
 label.lightgreen {
-    color: rgb(19, 226, 99);
+    color: lightgreen;
 }
 
 label.yellow {
-    color: rgb(223, 209, 13);
+    color: yellow;
 }
  
- .add-category {
+.add-category {
      position: absolute;
-     top:50px;
+     top:70px;
      left:50%;
      transform: translateX(-50%);
-     font-size: 20px;
-     background-color: rgb(22, 185, 190);
-     padding: 5px;
-     border:2px solid black;
-     border-radius: 10px;
-     cursor: pointer;
-     transition: .3s;
+     width: 150px;
  }
- 
- .add-category:hover{
-     background-color: teal;
- }
+  
  
  .note {
-     position: absolute;
-     top:100px;
-   left:50%;
-   transform: translateX(-50%);
-   width: 70%;
-     
- }
- 
- .note-input {
-     width: 100%;
-     height: 25px;
-     background-color: thistle;
-     border:2px solid rgb(207, 142, 142);
- }
- 
- 
- .amount-input {
-     position: absolute;
-     background-color: white;
-     top:150px;
-     width: 50%;
-     left: 50%;
-     transform: translateX(-50%);
- }
+    margin-top:130px;
+    width: 100%;
+    text-align: center;
+    }
 
- .addTransaction-btn{
-     position: absolute;
-     top:300px;
-     left:50%;
-     transform: translateX(-50%);
-     cursor: pointer;
- }
+.note-input{
+    width: 80%;
+    border:2px solid black;
+}
+ 
+.amount {
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
+}
+.amount-input{
+    width: 40%;
+    border: 2px solid black;
+}
+ 
+.date {
+    margin-top:30px;
+    margin-bottom: 30px;
+    width: 100%;
+    text-align: center;
+    }
 
- .category:active{
-     background-color: turquoise;
- }
+.date-input{
+    width: 60%;
+    border:2px solid black;
+}
 
- .date {
-     position: absolute;
-     top:240px;
-     left:50%;
-     transform: translateX(-50%);
- }
+.addTransaction-btn{
+ position: relative;
+ left:50%;
+ width: 50%;
+ transform: translateX(-50%);
+ margin-bottom: 10px;
+}
+
+.note span,.amount span,.date span {
+    position: absolute;
+    width: 60%;
+    margin-top: 2px;
+    left:50%;
+    transform: translateX(-50%);
+display: block;
+color:rgb(212, 19, 19);
+}
+
+@media(min-width:700px){
+    .note-input{
+        width: 40%;
+    }
+    .amount-input{
+        width: 20%;
+    }
+    .categoryList{
+        margin-left: 200px;
+    }
+    .category-delete{
+        right: 200px;
+    }
+    .date-input{
+        width: 30%;
+    }
+    .addTransaction-btn{
+        width:30%;
+    }
+}
+@media(min-width:1024px){
+    .categoryList{
+        margin-left: 400px;
+    }
+    .category-delete{
+        right: 350px;
+    }
+    .date-input{
+        width:20%;
+    }
+    .addTransaction-btn{
+        width:20%;
+    }
+}
+@media(min-width:1440px){
+    .categoryList{
+        margin-left: 450px;
+    }
+    .category-delete{
+        right: 450px;
+    }
+}
+@media(min-width:1600px){
+    .categoryList{
+        margin-left: 500px;
+    }
+    .category-delete{
+        right: 450px;
+    }
+}
+
 
  

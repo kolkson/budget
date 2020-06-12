@@ -1,16 +1,13 @@
-import { applyMiddleware, createStore } from 'redux'
-// import thunkMiddleware from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension'
-
+import { applyMiddleware, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers/index';
 import promiseMiddleware from '../data/middlewares/promise';
-// import notificationsMiddleware from '../data/middlewares/notifications';
+import notificationMiddleware from '../data/middlewares/notification';
 
 export default function configureStore(preloadedState) {
     const middlewares = [
-        // thunkMiddleware,
         promiseMiddleware,
-        // notificationsMiddleware,
+        notificationMiddleware
     ];
     const middlewareEnhancer = applyMiddleware(...middlewares)
 

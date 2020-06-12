@@ -1,5 +1,10 @@
 .transactions-container{
-    margin-top: 200px;
+    width: 100%;
+    margin-top: 150px;
+}
+.transactions-container h2{
+    width: 100%;
+    text-align: center;
 }
 
 .transactions-container ul {
@@ -8,30 +13,85 @@
 }
 
 .transactions-container ul li {
-    flex-basis: 25%;
+    flex-basis: 35%;
 }
 
+
+.transaction-name{
+    margin-left: -10px;
+}
+.transaction-name-second {
+    margin-left: -10px;
+}
+.transaction-categoryName{
+    display: block;
+}
+
+.transaction-mainCategory{
+display: none;
+}
+.transaction-mainCategory-name{
+    display: none;
+} 
+.transaction-delete{
+    position: absolute;
+    right: 0;
+    font-size: 24px;
+    color:rgb(110, 12, 12);
+    cursor: pointer;
+    transition: .3s;
+}
+
+
 li.green {
-    color: rgb(24, 218, 24);
+    color: green;
 }
 
 li.red {
-    color: rgb(218, 55, 14);
+    color: red;
+    font-weight: bold;
 }
 
 li.blue {
-    color: rgb(13, 133, 180);
+    color: blue;
+    font-weight: bold;
 }
 
 li.violet {
-    color: rgb(121, 11, 148);
+    color: violet;
+    font-weight: bold;
 }
 
 
 li.lightgreen {
-    color: rgb(19, 226, 99);
+    color: lightgreen;
+    font-weight: bold;
 }
 
 li.yellow {
-    color: rgb(223, 209, 13);
+    color: yellow;
+    font-weight: bold;
+}
+
+
+@media(min-width:700px){
+    .transactions-container ul li {
+        flex-basis: 24%;
+    }
+    .transaction-mainCategory{
+        display: block;
+        }
+        .transaction-mainCategory-name{
+            display: block;
+        } 
+}
+@media(min-width:1024px){
+    .transaction-delete{
+        right: 50px;
+    }
+}
+@media(min-width:1440px){
+    .transaction-delete{
+        right: 100px;
+    }
 }

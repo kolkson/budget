@@ -1,55 +1,45 @@
-import React, { useMemo } from 'react'
+import React, { useMemo } from 'react';
 import './MainCategory.css';
-import { groupBy } from 'lodash';
-import { addCategory } from '../../data/actions/common.actions';
-import { connect } from 'react-redux';
-
-function MainCategory({ onClick, key, parentCategory, transactions, id }) {
+import { BsFillTrashFill } from 'react-icons/bs';
 
 
 
+export default function MainCategory({ onClick, parentCategory, transactions, deleteMainCategory }) {
+
+    const mainCategoryLeftValue = useMemo(() => {
+
+        const mainCategoryValue = (() => {
+            try {
+                return transactions.filter(transaction => transaction.parentCategoryId === parentCategory.id)
+
+            } catch (error) {
+                return null;
+            }
+        })();
 
 
-    // const mainCategoryLeftValue = useMemo(() => {
-    //     const mainCategoryValue = (() => {
-    //         try {
-    //             return transactions
-    //                 .filter(transaction => transaction.name === name)
+        try {
+            const spentParentCategory = mainCategoryValue
+                .reduce((acc, transaction) => acc + transaction.amount, 0)
 
-
-    //         } catch (error) {
-    //             return null;
-    //         }
-
-    //     })();
-
-
-
-    //     const spentParentCategory = mainCategoryValue
-    //         .reduce((acc, transaction) => acc + transaction.amount, 0)
-    //     const total = spentParentCategory
-
-    //     return total
-    // }, [name, transactions])
-
+            const total = spentParentCategory
+            return total
+        } catch (error) {
+            return null
+        }
+    }, [transactions, parentCategory.id])
 
 
     return (
+        <>
+            <div className="mainCategory-container">
 
-        <div className="mainCategory-container">
-            <span onClick={() => onClick(parentCategory.id)} className={parentCategory.theme}>
-                {parentCategory.name} <button >Usuń kategorię</button></span>
-
-        </div>
-
+                <span onClick={() => onClick(parentCategory.id)} className={parentCategory.theme}>
+                    {parentCategory.name.length < 12 ? <p>{parentCategory.name}</p> : <p className="mainCategoryName-small">{parentCategory.name}</p>}
+                    <p className="value">{mainCategoryLeftValue} zł</p></span>
+                <BsFillTrashFill className="mainCategory-delete" onClick={() => deleteMainCategory(parentCategory.id)} />
+            </div>
+        </>
     )
 }
 
-export default connect(state => {
-    return {
-        // budget: state.budget.budget
-    }
-},
-    {
-
-    })(MainCategory)

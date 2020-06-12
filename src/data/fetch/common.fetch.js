@@ -25,7 +25,19 @@ export const addMainCategory = ({ data }) => {
     return promise;
 }
 
+export const removeMainCategory = (mainCategoryId) => {
+    const promise = fetch(
+        `${process.env.REACT_APP_API_URL}/parentCategories/${mainCategoryId}`,
+        {
+            method: "DELETE",
+            headers: {
+                'Content-type': 'application/json',
+            }
+        }
+    );
 
+    return promise;
+}
 
 export const addCategory = ({ parentCategoryId, data }) => {
     const promise = fetch(
@@ -36,6 +48,18 @@ export const addCategory = ({ parentCategoryId, data }) => {
                 'Content-type': 'application/json'
             },
             body: JSON.stringify(data),
+        });
+    return promise
+}
+
+export const removeCategory = (categoryId) => {
+    const promise = fetch(
+        `${process.env.REACT_APP_API_URL}/categories/${categoryId}`,
+        {
+            method: "DELETE",
+            headers: {
+                'Content-type': 'application/json'
+            },
         });
     return promise
 }

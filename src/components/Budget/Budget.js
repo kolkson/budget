@@ -2,96 +2,113 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import Wrapper from '../Wrapper';
 import './Budget.css';
-import poland from '../../icons/poland.png'
-import unitedKingdom from '../../icons/united-kingdom.png'
 import { connect } from 'react-redux';
-import { fetchBudget, fetchBudgetedCategories, fetchTransactions, removeTransaction } from '../../data/actions/budget.actions'
-import { fetchParentCategories, fetchAllCategories, addMainCategory } from '../../data/actions/common.actions';
+import { fetchTransactions, removeTransaction } from '../../data/actions/budget.actions'
+import { fetchParentCategories, fetchAllCategories, removeMainCategory, removeCategory } from '../../data/actions/common.actions';
 import AddMainCategory from '../MainCategory/AddMainCategory';
 import MainCategory from '../MainCategory';
 import AddTransaction from '../AddTransaction';
-import Transaction from '../Transaction'
+import Transaction from '../Transaction';
+import Chart from '../Chart'
+import Pagination from '../Pagination';
 
 
 function Budget({
-    fetchBudget, fetchBudgetedCategories, fetchAllCategories, fetchParentCategories, addMainCategory,
-    budgetedCategories, allCategories, parentCategories, budget, transactions, fetchTransactions, removeTransaction }) {
+    fetchAllCategories, fetchParentCategories,
+    allCategories, parentCategories, transactions, fetchTransactions, removeTransaction, removeMainCategory, removeCategory }) {
 
     useEffect(() => {
-        fetchBudget(1);
-        fetchBudgetedCategories(1);
         fetchAllCategories();
         fetchParentCategories();
         fetchTransactions();
-    }, [fetchBudget, fetchBudgetedCategories, fetchAllCategories, fetchParentCategories, fetchTransactions])
+    }, [fetchAllCategories, fetchParentCategories, fetchTransactions])
 
     const [selectedItem, setSelectedItem] = useState()
 
-    const handleAddMainCategory = (values) => {
-        addMainCategory({
-            data: values,
-        })
+    const deleteMainCategories = (id) => {
+        removeMainCategory(id)
     }
-
     const deleteTransactions = (id) => {
         removeTransaction(id)
-        transactions.filter(transaction => transaction.id !== id)
+    }
+
+    const deleteCategories = (id) => {
+        removeCategory(id)
     }
 
 
+    const [currentPage, setCurrentPage] = useState(1)
+    const [transactionsPerPage] = useState(5)
 
+    const indexOfLastTransaction = currentPage * transactionsPerPage;
+    const indexOfFirstTransaction = indexOfLastTransaction - transactionsPerPage;
+    const currentTransactions = transactions.slice(indexOfFirstTransaction, indexOfLastTransaction);
 
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
-    const mainCategoriesList = useMemo(() => parentCategories.map(parentCategory =>
-        <>
-            <MainCategory
-                parentCategory={parentCategory}
-                transactions={budget.transactions}
-                onClick={setSelectedItem}
-                categories={allCategories}
-                id={parentCategory.id}
-            />
-            {selectedItem === parentCategory.id && <AddTransaction
-                onClick={setSelectedItem}
-                categories={allCategories}
-                parentCategory={parentCategory}
-                id={parentCategory.id}
-            />}
-        </>
-    ), [allCategories, budget.transactions, parentCategories, selectedItem])
+    const mainCategoriesList = useMemo(() => parentCategories.map(parentCategory => {
 
+        return (
+            <>
+                <MainCategory
+                    parentCategory={parentCategory}
+                    transactions={transactions}
+                    onClick={setSelectedItem}
+                    categories={allCategories}
+                    deleteMainCategory={deleteMainCategories}
+                    parentCategories={parentCategories}
+                />
+                {selectedItem === parentCategory.id && <AddTransaction
+                    closeAddTransaction={setSelectedItem}
+                    categories={allCategories}
+                    parentCategory={parentCategory}
+                    deleteCategory={deleteCategories}
+                />}
+            </>)
 
+    }), [allCategories, transactions, parentCategories, selectedItem])
 
-    const transactionsList = useMemo(() => transactions.map(transaction =>
+    const transactionsList = useMemo(() => currentTransactions.map(transaction =>
         <Transaction
             transaction={transaction}
-            id={transaction.id}
-            onClick={deleteTransactions}
+            deleteTransaction={deleteTransactions}
+            parentCategories={parentCategories}
+            parentCategoryTheme={parentCategories.map(parent => parent.theme)}
         />
     ), [transactions, deleteTransactions])
 
 
     return (
         <Wrapper>
-            <div className="langugage-icons">
-                <img src={poland} alt="poland" />
-                <img src={unitedKingdom} alt="united-kingdom" className="united-kindgom" />
-            </div>
-            <AddMainCategory
-                onSubmit={handleAddMainCategory}
-            />
+            <AddMainCategory />
             <div className="mainCategories">
                 {mainCategoriesList}
             </div>
             <div className="transactions-container">
                 <h2>Historia transakcji:</h2>
                 <ul>
-                    <li>Nazwa</li>
-                    <li>Data</li>
-                    <li>Kwota</li>
-                    <li>Kategoria</li>
+                    <li className="transaction-name">Nazwa</li>
+                    <li className="transaction-date">Data</li>
+                    <li className="transaction-amount">Kwota</li>
+                    <li className="transaction-mainCategory">Kategoria</li>
                 </ul>
                 {transactionsList}
+            </div>
+            <div>
+                <Pagination
+                    transactionsPerPage={transactionsPerPage}
+                    totalTransactions={transactions.length}
+                    paginate={paginate}
+                />
+            </div>
+            <div className="chart">
+                <Chart
+                    parentCategories={parentCategories}
+                    transactions={transactions}
+                    parentCategory={parentCategories.map(parentCategory => parentCategory)}
+                />
             </div>
         </Wrapper>
     )
@@ -102,16 +119,14 @@ export default connect(state => {
         budgetedCategories: state.budget.budgetedCategories,
         allCategories: state.common.allCategories,
         parentCategories: state.common.parentCategories,
-        budget: state.budget.budget,
         transactions: state.budget.transactions
     }
 },
     {
-        fetchBudget,
-        fetchBudgetedCategories,
         fetchAllCategories,
         fetchParentCategories,
         fetchTransactions,
-        addMainCategory,
-        removeTransaction
+        removeTransaction,
+        removeMainCategory,
+        removeCategory,
     })(Budget)
