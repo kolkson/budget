@@ -34,11 +34,10 @@
 .mainCategory-container span {
     padding: 10px;
     margin-top: 50px;
-    width: 120px;
-    height: 120px;
+    width: 125px;
+    height: 125px;
     display: block;
     transform: translateY(-50%);
-    padding: 10px;
     border-radius: 20px;
     text-align: center;
     font-size: 20px;
